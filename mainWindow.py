@@ -26,4 +26,7 @@ class MainWindow(QMainWindow):
         file.close()
 
     def compile(self):
-        Compiler.lexicalAnalyzer()
+        tokens = Compiler.lexicalAnalysis(self.fileName[0])
+        self.plainTextEdit.clear()
+        for token in tokens:
+           self.plainTextEdit.appendPlainText("{}".format(token.toString()))

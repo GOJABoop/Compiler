@@ -1,3 +1,8 @@
+#The class Compiler calls to other components and modules
+from lexical_analyzer import lexicalAnalyzer
+
 class Compiler():
-    def lexicalAnalyzer():
-        print("Hola")
+    def lexicalAnalysis(fileName):
+        return lexicalAnalyzer(fileName)
+        
+
