@@ -2,6 +2,9 @@ reservedWords = ['const', 'regresa', 'principal', 'leer', 'libreria', 'entero',
                 'flotante', 'caracter', 'cadena', 'booleano', 'para', 'mientras'
                 'hacer', 'si', 'sino', 'finalmente', 'determina', 'siEs', 'enDefecto']
 
+NEW_LINE = '\n'
+EMPTY_CHARACTER = ""
+
 SEPARETOR = 'SEPARADOR'
 ID = 'IDENTIFICADOR'
 NUMBER = 'NUMERO'
@@ -22,7 +25,7 @@ UNDERSCORE = '_'
 
 LESS_THAN = '<'
 GREATER_THAN = '>'
-EQUALS = '='
+ASSIGNMENT = '='
 NEGATION = '!'
 AND = '&'
 OR = '|'
