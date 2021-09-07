@@ -1,9 +1,7 @@
-from PyQt6.uic.load_ui import loadUi
-from compiler import Compiler
-from PyQt6.QtWidgets import QFileDialog, QHBoxLayout, QMainWindow, QTableWidgetItem, QTableWidget
+from PyQt6.QtWidgets import QFileDialog, QMainWindow, QTableWidgetItem
 from compiler import Compiler
 from PyQt6 import uic
-from my_token import Token
+
 
 class MainWindow(QMainWindow):
     fileName = ''

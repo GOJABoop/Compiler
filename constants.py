@@ -1,9 +1,12 @@
-reservedWords = ['const', 'regresa', 'principal', 'leer', 'libreria', 'entero', 
+reservedWords = ['const', 'regresa', 'principal', 'leer', 'imprime', 'libreria', 'entero', 
                 'flotante', 'caracter', 'cadena', 'booleano', 'para', 'mientras'
                 'hacer', 'si', 'sino', 'finalmente', 'determina', 'siEs', 'enDefecto']
 
 NEW_LINE = '\n'
+TAB = '\t'
+SPACE = ' '
 EMPTY_CHARACTER = ""
+DOT = '.'
 
 SEPARETOR = 'SEPARADOR'
 ID = 'IDENTIFICADOR'
@@ -12,6 +15,8 @@ RESERVED_WORD = 'PALABRA RESERVADA'
 ASSIGNMENT_OPERATION = 'OPERACION DE ASIGNACION'
 LOGIC_OPERATION = 'OPERACION LOGICA'
 MATH_OPERATION = 'OPERACION MATEMATICA'
+AND_OPERATION = 'OPERACION AND'
+OR_OPERATION = 'OPERACION OR'
 
 #COMPONENTS
 COMMA = ','
