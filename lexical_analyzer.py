@@ -4,6 +4,7 @@ from my_token import Token
 
 tokens = []
 multilineCommentsActivated = False
+char = ''
 
 def lexicalAnalyzer(fileName):
     countLines = 0
@@ -12,7 +13,10 @@ def lexicalAnalyzer(fileName):
     lines = file.readlines()
     for line in lines:
         countLines += 1
-        findTokens(countLines, line)
+        try:
+            findTokens(countLines, line)
+        except Exception:
+            return "At line " + str(countLines) + " error: " + char + " is not a valid id or operand"
     file.close()
     return tokens
 
@@ -30,6 +34,7 @@ def findTokens(countLines,line):
     state = 0
     lexem = ''
     global multilineCommentsActivated
+    global char
     while(i < len(line)):
         char = line[i]
         if(multilineCommentsActivated == True and (i+1) <= len(line)):
@@ -114,9 +119,7 @@ def findTokens(countLines,line):
                 elif(char == constants.SPACE or char == constants.TAB or char == constants.NEW_LINE):
                     i += 1
                 else:
-                    #aqui va lanzamos excepcion pinche sebas
-                    print("At line" + str(countLines) + " error: " + char + " is not a valid id or operand")
-                    i += 1
+                    raise Exception()
             elif(state == 1):
                 if(char == constants.ASSIGNMENT):
                     lexem += char

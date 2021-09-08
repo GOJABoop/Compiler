@@ -1,16 +1,16 @@
 libreria matematicas
-0.
-principal() ^?~{
-const flotante PI =/* //3.1416
+0. asa
+principal() {
+const flotante PI = //3.1416
 entero radio
-flotante area
-radio = leer()
+flotante area^
+//radio = leer()
 imprime(radio)
 area = PI * radio**2aaa
 si( area <= 5. & area >= 1){
 imprime(area)
-}
+/*}
 finalmente{
 imprime(radio)
-}
+}*/
 }

@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QFileDialog, QMainWindow, QTableWidgetItem
+from PyQt6.QtWidgets import QFileDialog, QMainWindow, QTableWidgetItem, QListWidget, QListWidgetItem
 from compiler import Compiler
 from PyQt6 import uic
 
@@ -29,14 +29,19 @@ class MainWindow(QMainWindow):
         file.close()
 
     def compile(self):
+        self.listWidgetError.clear()
+        self.tableWidget.clearContents()
         tokens = Compiler.lexicalAnalysis(self.fileName[0])
-        row = 0
-        self.tableWidget.setRowCount(len(tokens))
-        self.tableWidget.setColumnCount(3)
-        for token in tokens:
-            self.tableWidget.setItem(row,0,QTableWidgetItem(str(token.getLineNumber())))
-            self.tableWidget.setItem(row,1,QTableWidgetItem(token.getLexem()))
-            self.tableWidget.setItem(row,2,QTableWidgetItem(token.getRole()))
-            row += 1
+        if(type(tokens) == str):
+            self.listWidgetError.addItem(tokens)
+        else:
+            row = 0
+            self.tableWidget.setRowCount(len(tokens))
+            self.tableWidget.setColumnCount(3)
+            for token in tokens:
+                self.tableWidget.setItem(row,0,QTableWidgetItem(str(token.getLineNumber())))
+                self.tableWidget.setItem(row,1,QTableWidgetItem(token.getLexem()))
+                self.tableWidget.setItem(row,2,QTableWidgetItem(token.getRole()))
+                row += 1
     
 

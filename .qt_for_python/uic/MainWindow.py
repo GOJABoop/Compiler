@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'c:\Users\Alberto\Desktop\lexical_analyzer\MainWindow.ui'
+# Form implementation generated from reading ui file 'c:\Users\Alberto\Desktop\7MO\COMPILADORES\lexical_analyzer\MainWindow.ui'
 #
 # Created by: PyQt6 UI code generator 6.1.1
 #
@@ -12,25 +12,25 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(784, 363)
+        MainWindow.resize(781, 403)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.plainTextEdit = QtWidgets.QPlainTextEdit(self.centralwidget)
-        self.plainTextEdit.setGeometry(QtCore.QRect(10, 10, 441, 331))
+        self.plainTextEdit.setGeometry(QtCore.QRect(10, 10, 391, 371))
         self.plainTextEdit.setObjectName("plainTextEdit")
         self.pushButtonOpen = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButtonOpen.setGeometry(QtCore.QRect(456, 10, 75, 31))
+        self.pushButtonOpen.setGeometry(QtCore.QRect(410, 10, 71, 31))
         self.pushButtonOpen.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.pushButtonOpen.setStyleSheet("")
         self.pushButtonOpen.setObjectName("pushButtonOpen")
         self.pushButtonSave = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButtonSave.setGeometry(QtCore.QRect(560, 10, 71, 31))
+        self.pushButtonSave.setGeometry(QtCore.QRect(490, 10, 71, 31))
         self.pushButtonSave.setObjectName("pushButtonSave")
         self.pushButtonCompile = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButtonCompile.setGeometry(QtCore.QRect(660, 10, 71, 31))
+        self.pushButtonCompile.setGeometry(QtCore.QRect(570, 10, 71, 31))
         self.pushButtonCompile.setObjectName("pushButtonCompile")
         self.tableWidget = QtWidgets.QTableWidget(self.centralwidget)
-        self.tableWidget.setGeometry(QtCore.QRect(460, 60, 311, 281))
+        self.tableWidget.setGeometry(QtCore.QRect(410, 90, 361, 291))
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(3)
         self.tableWidget.setRowCount(0)
@@ -49,6 +49,9 @@ class Ui_MainWindow(object):
         font.setBold(True)
         item.setFont(font)
         self.tableWidget.setHorizontalHeaderItem(2, item)
+        self.listWidgetError = QtWidgets.QListWidget(self.centralwidget)
+        self.listWidgetError.setGeometry(QtCore.QRect(410, 50, 361, 31))
+        self.listWidgetError.setObjectName("listWidgetError")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
