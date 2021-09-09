@@ -3,7 +3,7 @@ libreria matematicas
 principal() {
 const flotante PI = //3.1416
 entero radio
-flotante area^
+flotante area
 //radio = leer()
 imprime(radio)
 area = PI * radio**2aaa

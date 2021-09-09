@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QMessageBox, QFileDialog, QMainWindow, QTableWidgetItem, QListWidget, QListWidgetItem
+from PyQt6.QtWidgets import QMessageBox, QFileDialog, QMainWindow, QTableWidgetItem
 from compiler import Compiler
 from PyQt6 import uic
 
@@ -24,11 +24,7 @@ class MainWindow(QMainWindow):
                 self.plainTextEdit.appendPlainText("{}".format(line.strip()))
             file.close()
         except FileNotFoundError:
-            msg = QMessageBox()
-            msg.setIcon(QMessageBox.Icon.Critical)
-            msg.setText("Error: File not found")
-            msg.setWindowTitle("Error")
-            msg.exec()
+            self.messageBox()
         
 
     def saveFile(self):
@@ -36,12 +32,10 @@ class MainWindow(QMainWindow):
             file = open(self.fileName[0],'w+')
             file.write(self.plainTextEdit.toPlainText())
             file.close()
-        except IndexError or FileNotFoundError:
-            msg = QMessageBox()
-            msg.setIcon(QMessageBox.Icon.Critical)
-            msg.setText("Error: File not found")
-            msg.setWindowTitle("Error")
-            msg.exec()
+        except IndexError:
+            self.messageBox()
+        except FileNotFoundError:
+            self.messageBox()
 
 
     def compile(self):
@@ -60,11 +54,16 @@ class MainWindow(QMainWindow):
                     self.tableWidget.setItem(row,1,QTableWidgetItem(token.getLexem()))
                     self.tableWidget.setItem(row,2,QTableWidgetItem(token.getRole()))
                     row += 1
-        except IndexError or FileNotFoundError:
-            msg = QMessageBox()
-            msg.setIcon(QMessageBox.Icon.Critical)
-            msg.setText("Error: File not found")
-            msg.setWindowTitle("Error")
-            msg.exec()
-    
+        except IndexError:
+            self.messageBox()
+        except FileNotFoundError:
+            self.messageBox()
+
+
+    def messageBox(self):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Icon.Critical)
+        msg.setText("Error: File not found")
+        msg.setWindowTitle("Error")
+        msg.exec()
 
