@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QFileDialog, QMainWindow, QTableWidgetItem, QListWidget, QListWidgetItem
+from PyQt6.QtWidgets import QMessageBox, QFileDialog, QMainWindow, QTableWidgetItem, QListWidget, QListWidgetItem
 from compiler import Compiler
 from PyQt6 import uic
 
@@ -16,32 +16,55 @@ class MainWindow(QMainWindow):
         self.tableWidget.setColumnWidth(2,200)
 
     def openFile(self):
-        self.fileName = QFileDialog.getOpenFileName(self, 'Open file', 'C:', 'TXT files (*.txt)')
-        self.plainTextEdit.clear()
-        file = open(self.fileName[0], 'r')
-        for line in file:
-            self.plainTextEdit.appendPlainText("{}".format(line.strip()))
-        file.close()
+        try:
+            self.fileName = QFileDialog.getOpenFileName(self, 'Open file', 'C:', 'TXT files (*.txt)')
+            self.plainTextEdit.clear()
+            file = open(self.fileName[0], 'r')
+            for line in file:
+                self.plainTextEdit.appendPlainText("{}".format(line.strip()))
+            file.close()
+        except FileNotFoundError:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Icon.Critical)
+            msg.setText("Error: File not found")
+            msg.setWindowTitle("Error")
+            msg.exec()
+        
 
     def saveFile(self):
-        file = open(self.fileName[0],'w+')
-        file.write(self.plainTextEdit.toPlainText())
-        file.close()
+        try:
+            file = open(self.fileName[0],'w+')
+            file.write(self.plainTextEdit.toPlainText())
+            file.close()
+        except IndexError or FileNotFoundError:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Icon.Critical)
+            msg.setText("Error: File not found")
+            msg.setWindowTitle("Error")
+            msg.exec()
+
 
     def compile(self):
-        self.listWidgetError.clear()
-        self.tableWidget.clearContents()
-        tokens = Compiler.lexicalAnalysis(self.fileName[0])
-        if(type(tokens) == str):
-            self.listWidgetError.addItem(tokens)
-        else:
-            row = 0
-            self.tableWidget.setRowCount(len(tokens))
-            self.tableWidget.setColumnCount(3)
-            for token in tokens:
-                self.tableWidget.setItem(row,0,QTableWidgetItem(str(token.getLineNumber())))
-                self.tableWidget.setItem(row,1,QTableWidgetItem(token.getLexem()))
-                self.tableWidget.setItem(row,2,QTableWidgetItem(token.getRole()))
-                row += 1
+        try:
+            self.listWidgetError.clear()
+            self.tableWidget.clearContents()
+            tokens = Compiler.lexicalAnalysis(self.fileName[0])
+            if(type(tokens) == str):
+                self.listWidgetError.addItem(tokens)
+            else:
+                row = 0
+                self.tableWidget.setRowCount(len(tokens))
+                self.tableWidget.setColumnCount(3)
+                for token in tokens:
+                    self.tableWidget.setItem(row,0,QTableWidgetItem(str(token.getLineNumber())))
+                    self.tableWidget.setItem(row,1,QTableWidgetItem(token.getLexem()))
+                    self.tableWidget.setItem(row,2,QTableWidgetItem(token.getRole()))
+                    row += 1
+        except IndexError or FileNotFoundError:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Icon.Critical)
+            msg.setText("Error: File not found")
+            msg.setWindowTitle("Error")
+            msg.exec()
     
 
