@@ -43,7 +43,7 @@ imprime(\<variable\> | \<constante\> | \<numero\> | \<funcion\>)
 **Reseverd words**  
 libreria, const, nulo, regresa, principal
 
-**TData types**  
+**Data types**  
 entero, flotante, caracter, cadena, booleano
 
 **Iterative commands**  
@@ -75,3 +75,5 @@ S ::=  [\<comentarios\>]* \<librerias\> [  [\<comentarios\>]* | \<funcion\> | \<
 \<comentarios\> ::= '//' \<palabra\>* | '/\*' \<palabra\>* '\*/'  
 \<palabra\> ::= \<caracter\>\<palabra\> | 'ʎ'  
 \<caracter\>::= [A..Z] | [a..z] | [0..9] | [‘!’,’#’,’$’,’%’,’&’,’/’] 
+	
+Grammar was defined in Spanish by agreement of the class.
